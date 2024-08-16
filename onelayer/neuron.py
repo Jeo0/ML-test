@@ -34,7 +34,7 @@ def onelayer(ar1, weightssss, bias):
         # store it in cache
         cache.append(summation)
 
-        # reset weightindex  and summation for the next loop
+        # end sequence: reset & increment
         summation = 0
         weight_index = 0
         neuron_index +=1
