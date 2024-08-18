@@ -5,6 +5,8 @@ the output should be 4.8, 1.21, 2.385
 
 this file contains a simple implmentation of calcualting the outputs of one layer with 
 dyanmically (multiple input neurons and output neurons) numbered neurons
+
+manual method
 """
 
 def onelayer(ar1, weightssss, bias):
@@ -43,28 +45,29 @@ def onelayer(ar1, weightssss, bias):
 
 
 if __name__ == "__main__":
-    output = []
-
-    # input layer (4)
     inputs = [1,2,3,2.5]
 
-
-    # 1st hidden layer (4 neurons, 3 output)
     weights = [[0.2,0.8,-0.5,1.],
                [0.5,-0.91,0.26,-0.5],
-               [-0.26,-0.27,0.17,0.87]  ]
+               [-0.26,-0.27,0.17,0.87]]
     bias = [2,3,0.5]
+
+    output = []
+    
+    
     output.append(onelayer(inputs, weights, bias))
-
-
-    # output layer (3 input, 4 outputs)
-    weights2 = [[-2.,-1., 0.42],
-                [1., .35, .86],
-                [0.6, 0.8, 5.0],
-                [0.5, -.7, -1.]
-                ]
-    bias2   = [0.3, 14, 0.9, 10.]
-    output.append(onelayer(output[0], weights2, bias2))
-
     print(output)
+
+
+
+    # plotting
+    x = output[0][0]
+    y = output[0][1]
+    z = output[0][2]
+
+    ax = plt.figure().add_subplot(projection='3d')
+    ax.quiver(0,0,0, x,y,z)
+
+    ax.set_title('3D line plot geeks for geeks')
+    plt.show()
 
