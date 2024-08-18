@@ -3,10 +3,8 @@ from https://www.youtube.com/watch?v=lGLto9Xd7bU&list=PLQVvvaa0QuDcjD5BAw2DxE6OF
 @ 11:46
 the output should be 4.8, 1.21, 2.385
 
-this file contains a simple implmentation of calcualting the outputs of one layer with 
-dyanmically (multiple input neurons and output neurons) numbered neurons
-
-manual method
+this file contains a simple forward pass implementation 
+with a manual method
 """
 
 def onelayer(ar1, weightssss, bias):
