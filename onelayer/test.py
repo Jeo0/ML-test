@@ -1,19 +1,11 @@
-"""
-from https://www.youtube.com/watch?v=lGLto9Xd7bU&list=PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3&index=2
-@ 11:46
-the output should be 4.8, 1.21, 2.385
-
-this file contains a simple implmentation of calcualting the outputs of one layer with 
-dyanmically (multiple input neurons and output neurons) numbered neurons
-"""
-
 def onelayer(ar1, weightssss, bias):
     """
     ar1:    1D
     weightssss:    2D
     bias:   1D
     """
-
+    
+    
     cache = []          # temporary small storage
     summation = 0       # temporary storage
     weight_index = 0            # temporary iterator
@@ -31,7 +23,7 @@ def onelayer(ar1, weightssss, bias):
         # store it in cache
         cache.append(summation)
 
-        # end sequence: reset & increment
+        # reset weightindex  and summation for the next loop
         summation = 0
         weight_index = 0
         neuron_index +=1
@@ -41,30 +33,44 @@ def onelayer(ar1, weightssss, bias):
     return cache
 
 
+import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
-    output = []
-
-    # input layer (4)
     inputs = [1,2,3,2.5]
+    for x in range(len(inputs)):
+        inputs[x] /= 4
 
-
-    # 1st hidden layer (4 neurons, 3 output)
     weights = [[0.2,0.8,-0.5,1.],
                [0.5,-0.91,0.26,-0.5],
-               [-0.26,-0.27,0.17,0.87]  ]
+               [-0.26,-0.27,0.17,0.87]
+            ]
     bias = [2,3,0.5]
+    output = []
+    
+    weights2 = [[0.2,0.4,0.3],
+    [0.2,0.9,-0.8],
+    [0.3,0.5,0.7]]
+    
     output.append(onelayer(inputs, weights, bias))
-
-
-    # output layer (3 input, 4 outputs)
-    weights2 = [[-2.,-1., 0.42],
-                [1., .35, .86],
-                [0.6, 0.8, 5.0],
-                [0.5, -.7, -1.]
-                ]
-    bias2   = [0.3, 14, 0.9, 10.]
-    output.append(onelayer(output[0], weights2, bias2))
-
+    output.append(onelayer(output[0], weights2, bias))
     print(output)
+
+    fig = plt.figure()
+    ax = plt.axes(projection='3d')
+
+    # defining all 3 axis
+    """
+    z = np.linspace(0, 1, 100)
+    x = z * np.sin(25 * z)
+    y = z * np.cos(25 * z)
+    """
+
+    z = output[0][0]
+    x = output[0][1]
+    y = output[0][2]
+
+    # plotting
+    ax.plot3D(x, y, z, 'green')
+    ax.set_title('3D line plot geeks for geeks')
+    plt.show()
 
