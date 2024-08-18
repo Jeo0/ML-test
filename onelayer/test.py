@@ -52,25 +52,18 @@ if __name__ == "__main__":
     [0.3,0.5,0.7]]
     
     output.append(onelayer(inputs, weights, bias))
-    output.append(onelayer(output[0], weights2, bias))
     print(output)
 
-    fig = plt.figure()
-    ax = plt.axes(projection='3d')
 
-    # defining all 3 axis
-    """
-    z = np.linspace(0, 1, 100)
-    x = z * np.sin(25 * z)
-    y = z * np.cos(25 * z)
-    """
 
-    z = output[0][0]
-    x = output[0][1]
-    y = output[0][2]
+    x = output[0][0]
+    y = output[0][1]
+    z = output[0][2]
+
+    ax = plt.figure().add_subplot(projection='3d')
+    ax.quiver(0,0,0, x,y,z)
 
     # plotting
-    ax.plot3D(x, y, z, 'green')
     ax.set_title('3D line plot geeks for geeks')
     plt.show()
 
